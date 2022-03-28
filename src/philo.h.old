@@ -1,0 +1,94 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amaarifa <amaarifa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/18 08:10:17 by amaarifa          #+#    #+#             */
+/*   Updated: 2022/03/22 17:39:24 by amaarifa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PHILO_H
+# define PHILO_H
+# include <stdio.h>
+# include <pthread.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <sys/time.h>
+
+typedef struct timeval t_time;
+
+
+// typedef struct s_global
+// {
+// 	int					n_philo;
+// 	int					time_die;
+// 	int					time_eat;
+// 	int					time_sleep;
+// 	int					n_eat;
+// 	int					death;
+// 	long				start_time;
+// 	pthread_mutex_t		*forks;
+// 	pthread_mutex_t		msg;
+// } t_global;
+
+// typedef struct s_philo
+// {
+// 	int		id;
+// 	long 	last_time_eat;
+// 	t_global *gloabl;
+// } t_phio;
+
+
+typedef struct s_philo_state
+{
+	int	last_time_eat;
+	int	state;
+	long time;
+	pthread_mutex_t time_mutex;
+}	t_philo_state;
+
+typedef struct s_global
+{
+	int					n_philo;
+	int					time_die;
+	int					time_eat;
+	int					time_sleep;
+	int					n_eat;
+	int					death;
+	pthread_mutex_t		*forks;
+	pthread_mutex_t		curr_time;
+	pthread_mutex_t 	msg;
+	t_philo_state		*philos;
+	long				start_time;
+	long				current_time;
+	char				*fork_msg;
+	char				*eat_msg;
+	char				*sleep_msg;
+	char				*think_msg;
+	pthread_mutex_t		fork_msg_mutex;
+	pthread_mutex_t		eat_msg_mutex;
+	pthread_mutex_t		sleep_msg_mutex;
+	pthread_mutex_t		think_msg_mutex;
+	int					game_over;
+}	t_global;
+
+
+typedef struct s_philo
+{
+	t_global	*global;
+	int			id;
+}	t_philo;
+
+/* ----------- HELPERS ------------*/
+int		ft_atoi(const char	*str);
+int		ft_isdigit(int c);
+size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char	*src);
+
+/* ---------- UTILS -------------- */
+void	throw_err(char *err);
+
+#endif
