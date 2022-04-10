@@ -1,5 +1,5 @@
 CC = cc 
-CFALGS = -Wall -Werror -Wextra -pthread
+CFALGS = -Wall -Werror -Wextra -pthread -g -fsanitize=address
 
 HELPERS_PATH = ./src/helpers
 UTILS_PATH = ./src/utils
@@ -7,7 +7,7 @@ UTILS_PATH = ./src/utils
 HELPERS = ${HELPERS_PATH}/ft_isdigit.c ${HELPERS_PATH}/ft_atoi.c
 
 UTILS = ${UTILS_PATH}/parser.c ${UTILS_PATH}/throw_error.c ${UTILS_PATH}/routine.c \
-		${UTILS_PATH}/get_time.c ${UTILS_PATH}/ft_sleep.c
+		${UTILS_PATH}/get_time.c ${UTILS_PATH}/ft_sleep.c ${UTILS_PATH}/watcher.c
 
 SRC = ./src/philo.c ${UTILS} ${HELPERS}
 
