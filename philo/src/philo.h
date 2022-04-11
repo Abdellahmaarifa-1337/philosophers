@@ -6,7 +6,7 @@
 /*   By: amaarifa <amaarifa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 16:56:03 by amaarifa          #+#    #+#             */
-/*   Updated: 2022/04/10 22:34:18 by amaarifa         ###   ########.fr       */
+/*   Updated: 2022/04/10 23:40:05 by amaarifa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,11 @@ typedef struct s_global {
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				meals;
-	int				death;
 	int				finish_eating;
 	long			start_time;
-	int				finish;
 	pthread_mutex_t	finish_eating_mutex;
-	pthread_mutex_t	finish_mutex;
 	pthread_mutex_t	*fork_mutex;
 	pthread_mutex_t	msg_mutex;
-	pthread_mutex_t	death_mutex;
 }	t_global;
 
 typedef struct s_philo {
